@@ -5,7 +5,8 @@ const users = {};
 
 http.createServer(async (req, res) => {
     try {
-        console.log(req.method, req.url);
+        console.log('request : ', req);
+        console.log('req.method : ', req.method, 'req.url : ', req.url);
         if (req.method === 'GET') {
             if (req.url === '/') {
                 const data = await fs.readFile('./restFront.html');
