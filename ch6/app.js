@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
 const cookieParser = require('cookie-parser'); // 미들웨어
 const dotenv = require('dotenv');
@@ -32,6 +33,10 @@ app.set('port', process.env.PORT || 3000);
 // app.post('/abc', 미들웨어) : abc로 시작하는 POST요청에서 미들웨어 실행
 app.use(morgan('dev'));
 app.use('/', express.static(path.join(__dirname, 'public')));
+// app.use('요청 경로', express.static('실제 경로'));
+// static 미들웨어는 정적인 파일들을 제공하는 라우터 역할을 한다.
+// public/stylesheets/style.css 는 http://localhost:3000/stylesheets/style.css 로 접근 가능하다.
+// public 폴더에 넣으면 브라우저에서 접근할 수 있다.
 app.use(express. json);
 app.use(express, urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -49,6 +54,12 @@ app.use((req, res, next) => {
     console.log('모든 요청에 다 실행됩니다.');
     next();
 });
+app.use(express.json);
+app.use(express.urlencoded({extended: false}));
+// extended option이 false 이면 노드의 querystring 모듈을 사용하여 쿼리스트링을 해석하고, true면 qs 모듈을 사용하여 쿼리스트링을 해석한다.
+app.use(bodyParser.raw());
+app.use(bodyParser.text());
+
 
 app.get('/', (req, res, next) => {
     console.log('GET / 요청에서만 실행됩니다.');

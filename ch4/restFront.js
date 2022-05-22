@@ -15,7 +15,7 @@ async function getUser() { // 로딩 시 사용자 정보를 가져오는 함수
                 const name = prompt('바꿀 이름을 입력하세요');
                 if(!name) {
                     return alert('이름을 반드시 입력하셔야 합니다.');
-                }
+                }x1
                 try {
                     await axios.put('/user/', key, { name });
                     getUser();
