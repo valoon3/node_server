@@ -32,9 +32,6 @@ app.set('port', process.env.PORT || 3000);
 // app.use('/abc', 미들웨어) : abc로 시작하는 요청에서 미들웨어 실행
 // app.post('/abc', 미들웨어) : abc로 시작하는 POST요청에서 미들웨어 실행
 app.use(morgan('dev'));
-app.use(((req, res, next) => {
-    morgan('dve', )
-}));
 app.use('/', express.static(path.join(__dirname, 'public')));
 // app.use('요청 경로', express.static('실제 경로'));
 // static 미들웨어는 정적인 파일들을 제공하는 라우터 역할을 한다.
