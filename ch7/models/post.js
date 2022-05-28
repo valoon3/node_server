@@ -6,6 +6,5 @@ module.exports = (sequelize, DataTypes) => {
         charset: 'utf8mb4',
         collate: 'utf8mb_general_ci',
     });
-    Post.associate = (db) => {};
+    Post.associate = (db) => {}; // table 연결
 };
-
